@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PokeApp.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:scroll="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
+    Title="{Binding Title}"
+    android:ListView.IsFastScrollEnabled="True">
+
+    <ListView
+        HasUnevenRows="True"
+        IsRefreshing="{Binding IsBusy}"
+        ItemsSource="{Binding Pokemons}"
+        SelectionMode="None">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+
+                        <ff:CachedImage
+                            Grid.Row="0"
+                            FadeAnimationDuration="500"
+                            FadeAnimationEnabled="True"
+                            HeightRequest="100"
+                            HorizontalOptions="Center"
+                            Source="{Binding sprites.front_default}"
+                            WidthRequest="100">
+                            <ff:CachedImage.Transformations>
+                                <ffTransformations:RoundedTransformation Radius="240" />
+                            </ff:CachedImage.Transformations>
+                        </ff:CachedImage>
+
+
+                        <Label
+                            Grid.Row="1"
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding name}" />
+
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        <ListView.Behaviors>
+            <scroll:InfiniteScrollBehavior IsLoadingMore="{Binding IsBusy}" />
+        </ListView.Behaviors>
+    </ListView>
+
+</ContentPage>
