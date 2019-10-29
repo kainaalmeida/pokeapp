@@ -1,121 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr format="reference" name="mediaRouteAudioTrackDrawable"/>
-    <attr format="reference" name="mediaRouteButtonStyle"/>
-    <attr format="reference" name="mediaRouteCloseDrawable"/>
-    <attr format="reference" name="mediaRouteControlPanelThemeOverlay"/>
-    <attr format="reference" name="mediaRouteDefaultIconDrawable"/>
-    <attr format="reference" name="mediaRoutePauseDrawable"/>
-    <attr format="reference" name="mediaRoutePlayDrawable"/>
-    <attr format="reference" name="mediaRouteSpeakerGroupIconDrawable"/>
-    <attr format="reference" name="mediaRouteSpeakerIconDrawable"/>
-    <attr format="reference" name="mediaRouteStopDrawable"/>
-    <attr format="reference" name="mediaRouteTheme"/>
-    <attr format="reference" name="mediaRouteTvIconDrawable"/>
-    <declare-styleable name="MediaRouteButton">
-        <!-- This drawable is a state list where the "checked" state
-             indicates active media routing.  Checkable indicates connecting
-             and non-checked / non-checkable indicates
-             that media is playing to the local device only. -->
-        <attr format="reference" name="externalRouteEnabledDrawable"/>
-        <!-- Tint to apply to the media route button -->
-        <attr format="color" name="mediaRouteButtonTint"/>
-
+    <attr format="reference" name="cardViewStyle"/>
+    <color name="cardview_dark_background">#FF424242</color>
+    <color name="cardview_light_background">#FFFFFFFF</color>
+    <color name="cardview_shadow_end_color">#03000000</color>
+    <color name="cardview_shadow_start_color">#37000000</color>
+    <declare-styleable name="CardView">
+        <!-- Background color for CardView. -->
+        <attr format="color" name="cardBackgroundColor"/>
+        <!-- Corner radius for CardView. -->
+        <attr format="dimension" name="cardCornerRadius"/>
+        <!-- Elevation for CardView. -->
+        <attr format="dimension" name="cardElevation"/>
+        <!-- Maximum Elevation for CardView. -->
+        <attr format="dimension" name="cardMaxElevation"/>
+        <!-- Add padding in API v21+ as well to have the same measurements with previous versions. -->
+        <attr format="boolean" name="cardUseCompatPadding"/>
+        <!-- Add padding to CardView on v20 and before to prevent intersections between the Card content and rounded corners. -->
+        <attr format="boolean" name="cardPreventCornerOverlap"/>
+        <!-- Inner padding between the edges of the Card and children of the CardView. -->
+        <attr format="dimension" name="contentPadding"/>
+        <!-- Inner padding between the left edge of the Card and children of the CardView. -->
+        <attr format="dimension" name="contentPaddingLeft"/>
+        <!-- Inner padding between the right edge of the Card and children of the CardView. -->
+        <attr format="dimension" name="contentPaddingRight"/>
+        <!-- Inner padding between the top edge of the Card and children of the CardView. -->
+        <attr format="dimension" name="contentPaddingTop"/>
+        <!-- Inner padding between the bottom edge of the Card and children of the CardView. -->
+        <attr format="dimension" name="contentPaddingBottom"/>
+        <!-- Workaround to read user defined minimum width -->
         <attr name="android:minWidth"/>
+        <!-- Workaround to read user defined minimum height -->
         <attr name="android:minHeight"/>
     </declare-styleable>
-    <dimen name="mr_controller_volume_group_list_item_height">68dp</dimen>
-    <dimen name="mr_controller_volume_group_list_item_icon_size">24dp</dimen>
-    <dimen name="mr_controller_volume_group_list_max_height">288dp</dimen>
-    <dimen name="mr_controller_volume_group_list_padding_top">16dp</dimen>
-    <dimen name="mr_dialog_fixed_width_major">320dp</dimen>
-    <dimen name="mr_dialog_fixed_width_minor">320dp</dimen>
-    <integer name="mr_controller_volume_group_list_animation_duration_ms">400</integer>
-    <integer name="mr_controller_volume_group_list_fade_in_duration_ms">400</integer>
-    <integer name="mr_controller_volume_group_list_fade_out_duration_ms">200</integer>
-    <integer name="mr_update_routes_delay_ms">300</integer>
-    <string name="mr_button_content_description">Cast button</string>
-    <string name="mr_cast_button_connected">Cast button. Connected</string>
-    <string name="mr_cast_button_connecting">Cast button. Connecting</string>
-    <string name="mr_cast_button_disconnected">Cast button. Disconnected</string>
-    <string name="mr_cast_dialog_title_view_placeholder" translatable="false">No info available</string>
-    <string name="mr_chooser_searching">Finding devices</string>
-    <string name="mr_chooser_title">Cast to</string>
-    <string name="mr_controller_album_art">Album art</string>
-    <string name="mr_controller_casting_screen">Casting screen</string>
-    <string name="mr_controller_close_description">Close</string>
-    <string name="mr_controller_collapse_group">Collapse</string>
-    <string name="mr_controller_disconnect">Disconnect</string>
-    <string name="mr_controller_expand_group">Expand</string>
-    <string name="mr_controller_no_info_available">No info available</string>
-    <string name="mr_controller_no_media_selected">No media selected</string>
-    <string name="mr_controller_pause">Pause</string>
-    <string name="mr_controller_play">Play</string>
-    <string name="mr_controller_stop">Stop</string>
-    <string name="mr_controller_stop_casting">Stop casting</string>
-    <string name="mr_controller_volume_slider">Volume slider</string>
-    <string name="mr_dialog_device_header" translatable="false">Cast to a device</string>
-    <string name="mr_dialog_route_header" translatable="false">Play on a group</string>
-    <string name="mr_system_route_name">System</string>
-    <string name="mr_user_route_category_name">Devices</string>
-    <style name="TextAppearance.MediaRouter.PrimaryText" parent="TextAppearance.AppCompat.Subhead"/>
-    <style name="TextAppearance.MediaRouter.SecondaryText" parent="TextAppearance.AppCompat.Body1"/>
-    <style name="TextAppearance.MediaRouter.Title" parent="TextAppearance.AppCompat.Title"/>
-    <style name="Theme.MediaRouter" parent="ThemeOverlay.AppCompat.Dark">
-        <item name="windowNoTitle">true</item>
-        <item name="mediaRouteButtonStyle">@style/Widget.MediaRouter.MediaRouteButton</item>
-
-        <item name="mediaRouteCloseDrawable">@drawable/mr_dialog_close_dark</item>
-        <item name="mediaRoutePlayDrawable">@drawable/mr_media_play_dark</item>
-        <item name="mediaRoutePauseDrawable">@drawable/mr_media_pause_dark</item>
-        <item name="mediaRouteStopDrawable">@drawable/mr_media_stop_dark</item>
-        <item name="mediaRouteAudioTrackDrawable">@drawable/mr_vol_type_audiotrack_dark</item>
-        <item name="mediaRouteDefaultIconDrawable">@drawable/ic_mr_button_disconnected_dark</item>
-        <item name="mediaRouteTvIconDrawable">@drawable/ic_vol_type_tv_dark</item>
-        <item name="mediaRouteSpeakerIconDrawable">@drawable/ic_vol_type_speaker_dark</item>
-        <item name="mediaRouteSpeakerGroupIconDrawable">@drawable/ic_vol_type_speaker_group_dark</item>
-
-        <item name="mediaRouteControlPanelThemeOverlay">@null</item>
+    <dimen name="cardview_compat_inset_shadow">1dp</dimen>
+    <dimen name="cardview_default_elevation">2dp</dimen>
+    <dimen name="cardview_default_radius">2dp</dimen>
+    <style name="Base.CardView" parent="android:Widget">
+        <item name="cardCornerRadius">@dimen/cardview_default_radius</item>
+        <item name="cardElevation">@dimen/cardview_default_elevation</item>
+        <item name="cardMaxElevation">@dimen/cardview_default_elevation</item>
+        <item name="cardUseCompatPadding">false</item>
+        <item name="cardPreventCornerOverlap">true</item>
     </style>
-    <style name="Theme.MediaRouter.Light" parent="ThemeOverlay.AppCompat.Light">
-        <item name="windowNoTitle">true</item>
-        <item name="mediaRouteButtonStyle">@style/Widget.MediaRouter.Light.MediaRouteButton</item>
-
-        <item name="mediaRouteCloseDrawable">@drawable/mr_dialog_close_light</item>
-        <item name="mediaRoutePlayDrawable">@drawable/mr_media_play_light</item>
-        <item name="mediaRoutePauseDrawable">@drawable/mr_media_pause_light</item>
-        <item name="mediaRouteStopDrawable">@drawable/mr_media_stop_light</item>
-        <item name="mediaRouteAudioTrackDrawable">@drawable/mr_vol_type_audiotrack_light</item>
-        <item name="mediaRouteDefaultIconDrawable">@drawable/ic_mr_button_grey</item>
-        <item name="mediaRouteTvIconDrawable">@drawable/ic_vol_type_tv_light</item>
-        <item name="mediaRouteSpeakerIconDrawable">@drawable/ic_vol_type_speaker_light</item>
-        <item name="mediaRouteSpeakerGroupIconDrawable">@drawable/ic_vol_type_speaker_group_light</item>
-
-        <item name="mediaRouteControlPanelThemeOverlay">@null</item>
+    <style name="CardView" parent="Base.CardView">
     </style>
-    <style name="Theme.MediaRouter.Light.DarkControlPanel">
-        <item name="mediaRouteControlPanelThemeOverlay">@style/ThemeOverlay.MediaRouter.Dark</item>
+    <style name="CardView.Dark">
+        <item name="cardBackgroundColor">@color/cardview_dark_background</item>
     </style>
-    <style name="Theme.MediaRouter.LightControlPanel">
-        <item name="mediaRouteControlPanelThemeOverlay">@style/ThemeOverlay.MediaRouter.Light</item>
-    </style>
-    <style name="ThemeOverlay.MediaRouter.Dark" parent="ThemeOverlay.AppCompat.Dark">
-        <item name="mediaRoutePlayDrawable">@drawable/mr_media_play_dark</item>
-        <item name="mediaRoutePauseDrawable">@drawable/mr_media_pause_dark</item>
-        <item name="mediaRouteStopDrawable">@drawable/mr_media_stop_dark</item>
-        <item name="mediaRouteAudioTrackDrawable">@drawable/mr_vol_type_audiotrack_dark</item>
-
-    </style>
-    <style name="ThemeOverlay.MediaRouter.Light" parent="ThemeOverlay.AppCompat.Light">
-        <item name="mediaRoutePlayDrawable">@drawable/mr_media_play_light</item>
-        <item name="mediaRoutePauseDrawable">@drawable/mr_media_pause_light</item>
-        <item name="mediaRouteStopDrawable">@drawable/mr_media_stop_light</item>
-        <item name="mediaRouteAudioTrackDrawable">@drawable/mr_vol_type_audiotrack_light</item>
-    </style>
-    <style name="Widget.MediaRouter.Light.MediaRouteButton" parent="Widget.AppCompat.Light.ActionButton">
-        <item name="externalRouteEnabledDrawable">@drawable/mr_button_light</item>
-    </style>
-    <style name="Widget.MediaRouter.MediaRouteButton" parent="Widget.AppCompat.ActionButton">
-        <item name="externalRouteEnabledDrawable">@drawable/mr_button_dark</item>
+    <style name="CardView.Light">
+        <item name="cardBackgroundColor">@color/cardview_light_background</item>
     </style>
 </resources>

@@ -2,8 +2,11 @@
 using PokeApp.Models;
 using PokeApp.Services.Contrato;
 using PokeApp.Utils;
+using PokeApp.Views.Popups;
+using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -38,6 +41,7 @@ namespace PokeApp.ViewModels
             set { SetProperty(ref offset, value); }
         }
 
+        public DelegateCommand<Pokemon> NavegarCommand { get; set; }
 
         public MainPageViewModel(INavigationService navigationService, IPokeApi pokeApi, IPageDialogService pageDialogService)
             : base(navigationService)
@@ -49,6 +53,7 @@ namespace PokeApp.ViewModels
             _db = new LiteDatabase(Xamarin.Forms.DependencyService.Get<IHelper>().GetFilePath("Pokemon.db"));
             PokemonsPage = _db.GetCollection<PokemonList>();
 
+            NavegarCommand = new DelegateCommand<Pokemon>(async (pokemon) => await NavegarCommandExecute(pokemon));
 
             Pokemons = new InfiniteScrollCollection<Pokemon>
             {
@@ -83,6 +88,11 @@ namespace PokeApp.ViewModels
 
             Pokemons.LoadMoreAsync();
 
+        }
+
+        private async Task NavegarCommandExecute(Pokemon pokemon)
+        {
+            await PopupNavigation.Instance.PushAsync(new PokemonPopupPage(pokemon));
         }
 
         public override async void OnNavigatedTo(INavigationParameters parameters)

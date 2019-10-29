@@ -18,6 +18,7 @@ namespace PokeApp.Droid
 
             base.OnCreate(bundle);
             Xamarin.Essentials.Platform.Init(this, bundle);
+            Rg.Plugins.Popup.Popup.Init(this, bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
 

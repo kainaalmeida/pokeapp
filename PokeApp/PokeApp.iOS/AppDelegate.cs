@@ -25,6 +25,7 @@ namespace PokeApp.iOS
             global::Xamarin.Forms.Forms.Init();
 
             CachedImageRenderer.Init();
+            Rg.Plugins.Popup.Popup.Init();
 
             LoadApplication(new App(new iOSInitializer()));
 

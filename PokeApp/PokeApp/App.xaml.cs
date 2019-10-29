@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using PokeApp.Services;
 using PokeApp.Services.Contrato;
+using PokeApp.Views.Popups;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace PokeApp
@@ -36,6 +37,7 @@ namespace PokeApp
 
 
             containerRegistry.Register<IPokeApi, PokeApi>();
+            containerRegistry.RegisterForNavigation<PokemonPopupPage, PokemonPopupPageViewModel>();
         }
     }
 }

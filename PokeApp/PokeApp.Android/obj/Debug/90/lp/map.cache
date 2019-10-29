@@ -3,6 +3,7 @@ FFImageLoading.Platform
 FFImageLoading.Transformations
 FormsViewGroup
 Prism.Forms
+Rg.Plugins.Popup.Droid
 Xamarin.Android.Arch.Core.Common
 Xamarin.Android.Arch.Core.Runtime
 Xamarin.Android.Arch.Lifecycle.Common

@@ -8,4 +8,5 @@ C:\Users\Kaina\source\repos\PokeApp\PokeApp\PokeApp\obj\Debug\netstandard2.0\Pok
 C:\Users\Kaina\source\repos\PokeApp\PokeApp\PokeApp\obj\Debug\netstandard2.0\PokeApp.AssemblyInfo.cs
 C:\Users\Kaina\source\repos\PokeApp\PokeApp\PokeApp\obj\Debug\netstandard2.0\PokeApp.dll
 C:\Users\Kaina\source\repos\PokeApp\PokeApp\PokeApp\obj\Debug\netstandard2.0\PokeApp.pdb
+C:\Users\Kaina\source\repos\PokeApp\PokeApp\PokeApp\obj\Debug\netstandard2.0\Views\Popups\PokemonPopupPage.xaml.g.cs
 C:\Users\Kaina\source\repos\PokeApp\PokeApp\PokeApp\obj\Debug\netstandard2.0\XamlC.stamp

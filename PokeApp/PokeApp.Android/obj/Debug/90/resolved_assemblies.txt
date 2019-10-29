@@ -17,6 +17,8 @@ C:\Users\Kaina\source\repos\PokeApp\PokeApp\PokeApp.Android\obj\Debug\90\android
 C:\Users\Kaina\source\repos\PokeApp\PokeApp\PokeApp.Android\obj\Debug\90\android\assets\Prism.dll
 C:\Users\Kaina\source\repos\PokeApp\PokeApp\PokeApp.Android\obj\Debug\90\android\assets\Prism.DryIoc.Forms.dll
 C:\Users\Kaina\source\repos\PokeApp\PokeApp\PokeApp.Android\obj\Debug\90\android\assets\Prism.Forms.dll
+C:\Users\Kaina\source\repos\PokeApp\PokeApp\PokeApp.Android\obj\Debug\90\android\assets\Rg.Plugins.Popup.dll
+C:\Users\Kaina\source\repos\PokeApp\PokeApp\PokeApp.Android\obj\Debug\90\android\assets\Rg.Plugins.Popup.Droid.dll
 C:\Users\Kaina\source\repos\PokeApp\PokeApp\PokeApp.Android\obj\Debug\90\android\assets\System.Core.dll
 C:\Users\Kaina\source\repos\PokeApp\PokeApp\PokeApp.Android\obj\Debug\90\android\assets\System.dll
 C:\Users\Kaina\source\repos\PokeApp\PokeApp\PokeApp.Android\obj\Debug\90\android\assets\System.IO.Compression.dll
