@@ -29,7 +29,9 @@
         Margin="20"
         Padding="20,0"
         BackgroundColor="#3663ad"
+        BorderColor="Orange"
         CornerRadius="20"
+        HasShadow="False"
         VerticalOptions="Center">
         <Grid>
             <Grid.RowDefinitions>
@@ -69,26 +71,30 @@
                     FontAttributes="Bold"
                     FontSize="Medium"
                     HorizontalTextAlignment="Center"
-                    Text="ID" />
+                    Text="ID"
+                    TextColor="White" />
                 <Label
                     Grid.Row="1"
                     Grid.Column="0"
                     FontSize="Body"
                     HorizontalTextAlignment="Center"
-                    Text="{Binding Pokemon.id}" />
+                    Text="{Binding Pokemon.id}"
+                    TextColor="White" />
                 <Label
                     Grid.Row="0"
                     Grid.Column="1"
                     FontAttributes="Bold"
                     FontSize="Medium"
                     HorizontalTextAlignment="Center"
-                    Text="Altura" />
+                    Text="Altura"
+                    TextColor="White" />
                 <Label
                     Grid.Row="1"
                     Grid.Column="1"
                     FontSize="Medium"
                     HorizontalTextAlignment="Center"
-                    Text="{Binding Pokemon.height}" />
+                    Text="{Binding Pokemon.height}"
+                    TextColor="White" />
 
                 <Label
                     Grid.Row="0"
@@ -96,13 +102,15 @@
                     FontAttributes="Bold"
                     FontSize="Medium"
                     HorizontalTextAlignment="Center"
-                    Text="Peso" />
+                    Text="Peso"
+                    TextColor="White" />
                 <Label
                     Grid.Row="1"
                     Grid.Column="2"
                     FontSize="Medium"
                     HorizontalTextAlignment="Center"
-                    Text="{Binding Pokemon.weight}" />
+                    Text="{Binding Pokemon.weight}"
+                    TextColor="White" />
 
             </Grid>
 
@@ -112,18 +120,32 @@
                     FontAttributes="Bold"
                     FontSize="Medium"
                     HorizontalTextAlignment="Center"
-                    Text="Tipos" />
+                    Text="Tipos"
+                    TextColor="White" />
 
-                <StackLayout BindableLayout.ItemsSource="{Binding Pokemon.types}">
+                <FlexLayout
+                    AlignItems="Stretch"
+                    BindableLayout.ItemsSource="{Binding Pokemon.types}"
+                    Direction="Column"
+                    JustifyContent="SpaceEvenly"
+                    Wrap="Wrap">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <Label
-                                FontSize="Medium"
-                                HorizontalTextAlignment="Center"
-                                Text="{Binding type.name}" />
+                            <Frame
+                                Margin="5,0"
+                                Padding="0"
+                                CornerRadius="20"
+                                HasShadow="False">
+                                <Label
+                                    FontSize="Medium"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding type.name}"
+                                    TextColor="#3663ad"
+                                    VerticalOptions="Center" />
+                            </Frame>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
-                </StackLayout>
+                </FlexLayout>
 
             </StackLayout>
 

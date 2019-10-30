@@ -34,7 +34,8 @@
         HasUnevenRows="True"
         IsRefreshing="{Binding IsBusy}"
         ItemsSource="{Binding Pokemons}"
-        SelectionMode="None">
+        SelectionMode="None"
+        SeparatorVisibility="None">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
