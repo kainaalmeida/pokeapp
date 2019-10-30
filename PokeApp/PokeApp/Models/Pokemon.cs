@@ -4,7 +4,6 @@ using System.Text;
 
 namespace PokeApp.Models
 {
-
     public class Pokemon
     {
         public Ability[] abilities { get; set; }

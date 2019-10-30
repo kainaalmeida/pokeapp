@@ -1,5 +1,6 @@
 ﻿using Flurl;
 using Flurl.Http;
+using Newtonsoft.Json;
 using PokeApp.Models;
 using PokeApp.Services;
 using PokeApp.Services.Contrato;
@@ -14,7 +15,7 @@ namespace PokeApp.Services
     public class PokeApi : IPokeApi
     {
 
-        public async Task<PokemonList> ObterListaPokemons(int offset = 20, int limit = 20)
+        public async Task<PokemonList> ObterListaPokemons(int offset = 0, int limit = 20)
         {
             if (Connectivity.NetworkAccess != NetworkAccess.Internet) return null;
 
@@ -48,11 +49,18 @@ namespace PokeApp.Services
             try
             {
                 var response = await endpoint
+                    .WithTimeout(60)
                     .AllowAnyHttpStatus()
-                    .GetAsync()
-                    .ReceiveJson<Pokemon>();
+                    .GetAsync();
 
-                return response;
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var pokemon = JsonConvert.DeserializeObject<Pokemon>(content);
+                    return pokemon;
+                }
+                return null;
+                
             }
             catch (FlurlHttpException ex)
             {

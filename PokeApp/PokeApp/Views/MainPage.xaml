@@ -3,8 +3,8 @@
     x:Class="PokeApp.Views.MainPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
     xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
     xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     xmlns:scroll="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
@@ -52,9 +52,9 @@
             <scroll:InfiniteScrollBehavior IsLoadingMore="{Binding IsBusy}" />
 
             <b:EventToCommandBehavior
-                                Command="{Binding NavegarCommand}"
-                                EventArgsConverter="{StaticResource itemTappedEventArgsConverter}"
-                                EventName="ItemTapped" />
+                Command="{Binding NavegarCommand}"
+                EventArgsConverter="{StaticResource itemTappedEventArgsConverter}"
+                EventName="ItemTapped" />
         </ListView.Behaviors>
     </ListView>
 

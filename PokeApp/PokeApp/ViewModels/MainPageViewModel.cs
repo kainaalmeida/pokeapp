@@ -34,7 +34,7 @@ namespace PokeApp.ViewModels
 
         LiteCollection<PokemonList> PokemonsPage;
 
-        private int offset = 20;
+        private int offset = 0;
         public int OffSet
         {
             get { return offset; }
@@ -68,7 +68,8 @@ namespace PokeApp.ViewModels
                         foreach (var poke in PokemonList.results)
                         {
                             var pokemon = await _pokeApi.ObterPokemon(poke.url);
-                            items.Add(pokemon);
+                            if (pokemon != null)
+                                items.Add(pokemon);
                         }
                         offset += 20;
                     }
@@ -100,7 +101,7 @@ namespace PokeApp.ViewModels
             var navigationMode = parameters.GetNavigationMode();
             if (navigationMode != Prism.Navigation.NavigationMode.Back)
             {
-                await LoadPokemons();
+                //await LoadPokemons();
             }
         }
 
