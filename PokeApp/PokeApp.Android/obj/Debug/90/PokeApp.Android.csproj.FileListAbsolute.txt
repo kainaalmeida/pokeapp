@@ -604,3 +604,4 @@ C:\Users\Kaina\source\repos\PokeApp\PokeApp\PokeApp.Android\obj\Debug\90\stamp\_
 C:\Users\Kaina\source\repos\PokeApp\PokeApp\PokeApp.Android\obj\Debug\90\stamp\_GenerateJavaStubs.stamp
 C:\Users\Kaina\source\repos\PokeApp\PokeApp\PokeApp.Android\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\Kaina\source\repos\PokeApp\PokeApp\PokeApp.Android\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
+C:\Users\Kaina\source\repos\PokeApp\PokeApp\PokeApp.Android\obj\Debug\90\res\drawable\logo.png

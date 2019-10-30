@@ -7,9 +7,28 @@
     xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
     xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:fontawesome="clr-namespace:PokeApp.Utils"
     xmlns:scroll="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
     Title="{Binding Title}"
     android:ListView.IsFastScrollEnabled="True">
+
+    <NavigationPage.TitleView>
+        <Image
+            HeightRequest="40"
+            Source="logo.png"
+            VerticalOptions="Center" />
+    </NavigationPage.TitleView>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <FontImageSource
+                x:Key="galeryIcon"
+                FontFamily="{StaticResource FontAwesomeRegular}"
+                Glyph="{x:Static fontawesome:FontAwesomeIcons.Images}"
+                Size="20"
+                Color="White" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ListView
         HasUnevenRows="True"
@@ -19,32 +38,57 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
 
-                        <ff:CachedImage
-                            Grid.Row="0"
-                            FadeAnimationDuration="500"
-                            FadeAnimationEnabled="True"
-                            HeightRequest="100"
-                            HorizontalOptions="Center"
-                            Source="{Binding sprites.front_default}"
-                            WidthRequest="100">
-                            <ff:CachedImage.Transformations>
-                                <ffTransformations:RoundedTransformation Radius="240" />
-                            </ff:CachedImage.Transformations>
-                        </ff:CachedImage>
+                    <Frame
+                        Margin="10"
+                        BackgroundColor="#3663ad"
+                        CornerRadius="50">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <ff:CachedImage
+                                Grid.Column="0"
+                                Aspect="AspectFit"
+                                FadeAnimationDuration="500"
+                                FadeAnimationEnabled="True"
+                                HorizontalOptions="Center"
+                                Source="{Binding sprites.front_default}">
+                                <ff:CachedImage.Transformations>
+                                    <ffTransformations:RoundedTransformation Radius="240" />
+                                </ff:CachedImage.Transformations>
+                            </ff:CachedImage>
 
 
-                        <Label
-                            Grid.Row="1"
-                            HorizontalTextAlignment="Center"
-                            Text="{Binding name}" />
+                            <Label
+                                Grid.Column="1"
+                                FontSize="Medium"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding name}"
+                                TextColor="White"
+                                VerticalTextAlignment="Center" />
 
-                    </Grid>
+
+
+                            <ImageButton
+                                Grid.Column="2"
+                                Padding="15"
+                                BackgroundColor="Transparent"
+                                BorderColor="White"
+                                BorderWidth="2"
+                                CornerRadius="25"
+                                HeightRequest="50"
+                                HorizontalOptions="End"
+                                Source="{StaticResource galeryIcon}"
+                                WidthRequest="50" />
+
+                        </Grid>
+                    </Frame>
+
+
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>

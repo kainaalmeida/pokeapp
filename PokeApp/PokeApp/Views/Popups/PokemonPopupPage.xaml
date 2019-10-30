@@ -28,7 +28,7 @@
     <Frame
         Margin="20"
         Padding="20,0"
-        BackgroundColor="White"
+        BackgroundColor="#3663ad"
         CornerRadius="20"
         VerticalOptions="Center">
         <Grid>
