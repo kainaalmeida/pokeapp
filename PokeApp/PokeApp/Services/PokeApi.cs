@@ -72,5 +72,36 @@ namespace PokeApp.Services
                 throw new Exception(ex.Message);
             }
         }
+
+        public async Task<PokemonType> ObterTiposPokemons()
+        {
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet) return null;
+
+            try
+            {
+                var response = await EndPoints.UrlTypePokemon
+                    .WithTimeout(60)
+                    .AllowAnyHttpStatus()
+                    .GetAsync();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var pokemon = JsonConvert.DeserializeObject<PokemonType>(content);
+                    return pokemon;
+                }
+                return null;
+
+            }
+            catch (FlurlHttpException ex)
+            {
+                var msg = await ex.GetResponseStringAsync();
+                throw new Exception(msg);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

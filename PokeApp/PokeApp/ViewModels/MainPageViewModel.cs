@@ -22,7 +22,6 @@ namespace PokeApp.ViewModels
     {
         private readonly IPokeApi _pokeApi;
         private readonly IPageDialogService _pageDialogService;
-        private readonly LiteDatabase _db;
 
         private PokemonList pokemonList;
         public PokemonList PokemonList
@@ -34,13 +33,18 @@ namespace PokeApp.ViewModels
 
         public InfiniteScrollCollection<Pokemon> Pokemons { get; }
 
-        LiteCollection<PokemonList> PokemonsPage;
-
         private int offset = 0;
         public int OffSet
         {
             get { return offset; }
             set { SetProperty(ref offset, value); }
+        }
+
+        private PokemonType _pokemonType;
+        public PokemonType PokemonType
+        {
+            get { return _pokemonType; }
+            set { SetProperty(ref _pokemonType, value); }
         }
 
         public DelegateCommand<Pokemon> NavegarCommand { get; set; }
@@ -53,8 +57,6 @@ namespace PokeApp.ViewModels
 
             _pokeApi = pokeApi;
             _pageDialogService = pageDialogService;
-            _db = new LiteDatabase(Xamarin.Forms.DependencyService.Get<IHelper>().GetFilePath("Pokemon.db"));
-            PokemonsPage = _db.GetCollection<PokemonList>();
 
             NavegarCommand = new DelegateCommand<Pokemon>(async (pokemon) => await NavegarCommandExecute(pokemon));
             GaleriaCommand = new DelegateCommand<Pokemon>(async (pokemon) => await GaleriaCommandExecute(pokemon));
@@ -108,30 +110,25 @@ namespace PokeApp.ViewModels
             await PopupNavigation.Instance.PushAsync(new PokemonPopupPage(pokemon));
         }
 
-        public override async void OnNavigatedTo(INavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
+            base.OnNavigatedTo(parameters);
+
             var navigationMode = parameters.GetNavigationMode();
-            if (navigationMode != Prism.Navigation.NavigationMode.Back)
+
+            if(navigationMode != NavigationMode.Back)
             {
-                //await LoadPokemons();
+                LoadTypesPokemons().ConfigureAwait(false);
             }
+
         }
 
-        async Task LoadPokemons()
+        async Task LoadTypesPokemons()
         {
             try
             {
                 IsBusy = true;
-                await _pokeApi.ObterListaPokemons().ContinueWith(async t =>
-                {
-                    if (t.Result != null)
-                    {
-                        foreach (var poke in t.Result.results)
-                        {
-                            var pokemon = await _pokeApi.ObterPokemon(poke.url);
-                        }
-                    }
-                });
+                PokemonType = await _pokeApi.ObterTiposPokemons();
             }
             catch (Exception ex)
             {
@@ -141,22 +138,6 @@ namespace PokeApp.ViewModels
             {
                 IsBusy = false;
             }
-        }
-
-        async Task StoreData(PokemonList pokemonList)
-        {
-            if (PokemonsPage.Count() == 0)
-            {
-                PokemonsPage.Insert(pokemonList);
-                return;
-            }
-
-            var hasNextPage = PokemonsPage.Find(x => x.next == pokemonList.next);
-            if (hasNextPage.Count() > 0) return;
-
-            PokemonsPage.Insert(pokemonList);
-
-
         }
     }
 }

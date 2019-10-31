@@ -8,5 +8,7 @@ namespace PokeApp.Services.Contrato
         Task<PokemonList> ObterListaPokemons(int offset = 20, int limit = 20);
 
         Task<Pokemon> ObterPokemon(string endpoint);
+
+        Task<PokemonType> ObterTiposPokemons();
     }
 }
