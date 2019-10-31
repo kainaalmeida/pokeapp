@@ -63,6 +63,8 @@ namespace PokeApp.Views
 
                 if (items.Count > 0)
                     lv.ItemsSource = items;
+                else
+                    DisplayAlert("Aviso","Essse tipo de pokemon aí não foi carregado!","OK");
                     
             }
             else
