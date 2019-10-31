@@ -38,6 +38,7 @@ namespace PokeApp
 
             containerRegistry.Register<IPokeApi, PokeApi>();
             containerRegistry.RegisterForNavigation<PokemonPopupPage, PokemonPopupPageViewModel>();
+            containerRegistry.RegisterForNavigation<GaleriaPage, GaleriaPageViewModel>();
         }
     }
 }

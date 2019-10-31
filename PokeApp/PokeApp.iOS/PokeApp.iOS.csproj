@@ -213,10 +213,13 @@
     <PackageReference Include="Xamarin.Forms.Extended.InfiniteScrolling">
       <Version>1.0.0-preview2</Version>
     </PackageReference>
+    <PackageReference Include="CardsView">
+      <Version>2.3.5</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PokeApp\PokeApp.csproj">
-      <Project>{A682884C-CB44-4A89-B752-27BB634E0ABE}</Project>
+      <Project>{7C4FCB5F-0507-445F-B50F-3F3E27C93597}</Project>
       <Name>PokeApp</Name>
     </ProjectReference>
   </ItemGroup>

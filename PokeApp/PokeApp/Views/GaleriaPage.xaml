@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="PokeApp.Views.GaleriaPage"
+             BackgroundColor="#3663ad">
+    <NavigationPage.TitleView>
+        <Image
+            HeightRequest="40"
+            Source="logo.png"
+            VerticalOptions="Center" />
+    </NavigationPage.TitleView>
+
+    <cards:CarouselView 
+    ItemsSource="{Binding Images}"
+    SelectedIndex="{Binding CurrentIndex}">
+    <cards:CarouselView.ItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                <Frame 
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    HeightRequest="300"
+                    WidthRequest="300"
+                    Padding="0" 
+                    HasShadow="false"
+                    IsClippedToBounds="true"
+                    CornerRadius="10">
+                    
+                    <ff:CachedImage
+                                Grid.Column="0"
+                                Aspect="AspectFit"
+                                FadeAnimationDuration="500"
+                                FadeAnimationEnabled="True"
+                                HorizontalOptions="Center"
+                        WidthRequest="300"
+                        HeightRequest="300
+                        "
+                                Source="{Binding .}">
+                            </ff:CachedImage>
+                    
+                </Frame>
+            </ContentView>
+        </DataTemplate>
+    </cards:CarouselView.ItemTemplate>
+
+</cards:CarouselView>
+
+</ContentPage>

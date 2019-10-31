@@ -2,6 +2,7 @@
 using PokeApp.Models;
 using PokeApp.Services.Contrato;
 using PokeApp.Utils;
+using PokeApp.Views;
 using PokeApp.Views.Popups;
 using Prism.Commands;
 using Prism.Navigation;
@@ -12,6 +13,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 using Xamarin.Forms.Extended;
 
 namespace PokeApp.ViewModels
@@ -55,7 +57,7 @@ namespace PokeApp.ViewModels
             PokemonsPage = _db.GetCollection<PokemonList>();
 
             NavegarCommand = new DelegateCommand<Pokemon>(async (pokemon) => await NavegarCommandExecute(pokemon));
-            GaleriaCommand = new DelegateCommand<Pokemon>(async(pokemon) => await GaleriaCommandExecute(pokemon));
+            GaleriaCommand = new DelegateCommand<Pokemon>(async (pokemon) => await GaleriaCommandExecute(pokemon));
 
             Pokemons = new InfiniteScrollCollection<Pokemon>
             {
@@ -95,7 +97,10 @@ namespace PokeApp.ViewModels
 
         private async Task GaleriaCommandExecute(Pokemon pokemon)
         {
-            var teste = pokemon;
+            var parameter = new NavigationParameters();
+            parameter.Add("pokemon", pokemon);
+
+            await NavigationService.NavigateAsync($"{nameof(NavigationPage)}/{nameof(GaleriaPage)}", parameter);
         }
 
         private async Task NavegarCommandExecute(Pokemon pokemon)

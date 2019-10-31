@@ -1,5 +1,6 @@
 ﻿using FFImageLoading.Forms.Platform;
 using Foundation;
+using PanCardView.iOS;
 using Prism;
 using Prism.Ioc;
 using UIKit;
@@ -26,7 +27,7 @@ namespace PokeApp.iOS
 
             CachedImageRenderer.Init();
             Rg.Plugins.Popup.Popup.Init();
-
+            CardsViewRenderer.Preserve();
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);

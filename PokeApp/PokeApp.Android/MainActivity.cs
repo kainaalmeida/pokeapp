@@ -3,6 +3,7 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using FFImageLoading.Forms.Platform;
+using PanCardView.Droid;
 using Prism;
 using Prism.Ioc;
 
@@ -23,7 +24,7 @@ namespace PokeApp.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
             CachedImageRenderer.Init(true);
-
+            CardsViewRenderer.Preserve();
             LoadApplication(new App(new AndroidInitializer()));
         }
 

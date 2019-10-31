@@ -81,6 +81,9 @@
     <PackageReference Include="Xamarin.Forms.Extended.InfiniteScrolling">
       <Version>1.0.0-preview2</Version>
     </PackageReference>
+    <PackageReference Include="CardsView">
+      <Version>2.3.5</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\Helper.cs" />
