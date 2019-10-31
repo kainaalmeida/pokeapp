@@ -10,7 +10,9 @@
     xmlns:fontawesome="clr-namespace:PokeApp.Utils"
     xmlns:scroll="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
     Title="{Binding Title}"
-    android:ListView.IsFastScrollEnabled="True">
+    android:ListView.IsFastScrollEnabled="True"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true">
 
     <NavigationPage.TitleView>
         <Image

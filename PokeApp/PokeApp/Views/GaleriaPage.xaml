@@ -5,7 +5,10 @@
              xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:controls="clr-namespace:PanCardView.Controls;assembly=PanCardView"
              x:Class="PokeApp.Views.GaleriaPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
              BackgroundColor="#3663ad">
     <NavigationPage.TitleView>
         <Image
@@ -45,8 +48,9 @@
                 </Frame>
             </ContentView>
         </DataTemplate>
-    </cards:CarouselView.ItemTemplate>
 
+    </cards:CarouselView.ItemTemplate>
+        <controls:IndicatorsControl/>
 </cards:CarouselView>
 
 </ContentPage>
