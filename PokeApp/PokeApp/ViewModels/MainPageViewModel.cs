@@ -100,7 +100,7 @@ namespace PokeApp.ViewModels
             var parameter = new NavigationParameters();
             parameter.Add("pokemon", pokemon);
 
-            await NavigationService.NavigateAsync($"{nameof(NavigationPage)}/{nameof(GaleriaPage)}", parameter);
+            await NavigationService.NavigateAsync($"{nameof(GaleriaPage)}", parameter);
         }
 
         private async Task NavegarCommandExecute(Pokemon pokemon)
