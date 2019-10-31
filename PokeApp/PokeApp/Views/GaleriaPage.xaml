@@ -1,56 +1,54 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="http://prismlibrary.com"
-             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
-             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             xmlns:controls="clr-namespace:PanCardView.Controls;assembly=PanCardView"
-             x:Class="PokeApp.Views.GaleriaPage"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true"
-             BackgroundColor="#3663ad">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="PokeApp.Views.GaleriaPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+    xmlns:controls="clr-namespace:PanCardView.Controls;assembly=PanCardView"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:prism="http://prismlibrary.com"
+    ios:Page.UseSafeArea="true"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="#3663ad">
     <NavigationPage.TitleView>
         <Image
+            Margin="-20,0,0,0"
             HeightRequest="40"
             Source="logo.png"
             VerticalOptions="Center" />
     </NavigationPage.TitleView>
 
-    <cards:CarouselView 
-    ItemsSource="{Binding Images}"
-    SelectedIndex="{Binding CurrentIndex}">
-    <cards:CarouselView.ItemTemplate>
-        <DataTemplate>
-            <ContentView>
-                <Frame 
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    HeightRequest="300"
-                    WidthRequest="300"
-                    Padding="0" 
-                    HasShadow="false"
-                    IsClippedToBounds="true"
-                    CornerRadius="10">
-                    
-                    <ff:CachedImage
-                                Grid.Column="0"
-                                Aspect="AspectFit"
-                                FadeAnimationDuration="500"
-                                FadeAnimationEnabled="True"
-                                HorizontalOptions="Center"
-                        WidthRequest="300"
-                        HeightRequest="300
-                        "
-                                Source="{Binding .}">
-                            </ff:CachedImage>
-                    
-                </Frame>
-            </ContentView>
-        </DataTemplate>
+    <cards:CarouselView ItemsSource="{Binding Images}" SelectedIndex="{Binding CurrentIndex}">
+        <cards:CarouselView.ItemTemplate>
+            <DataTemplate>
+                <ContentView>
+                    <Frame
+                        Padding="0"
+                        CornerRadius="10"
+                        HasShadow="false"
+                        HeightRequest="300"
+                        HorizontalOptions="Center"
+                        IsClippedToBounds="true"
+                        VerticalOptions="Center"
+                        WidthRequest="300">
 
-    </cards:CarouselView.ItemTemplate>
-        <controls:IndicatorsControl/>
-</cards:CarouselView>
+                        <ff:CachedImage
+                            Grid.Column="0"
+                            Aspect="AspectFit"
+                            FadeAnimationDuration="500"
+                            FadeAnimationEnabled="True"
+                            HeightRequest="300                         "
+                            HorizontalOptions="Center"
+                            Source="{Binding .}"
+                            WidthRequest="300" />
+
+                    </Frame>
+                </ContentView>
+            </DataTemplate>
+
+        </cards:CarouselView.ItemTemplate>
+        <controls:IndicatorsControl />
+    </cards:CarouselView>
 
 </ContentPage>

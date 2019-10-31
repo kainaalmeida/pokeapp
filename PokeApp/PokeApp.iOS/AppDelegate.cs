@@ -1,5 +1,6 @@
 ﻿using FFImageLoading.Forms.Platform;
 using Foundation;
+using Lottie.Forms.iOS.Renderers;
 using PanCardView.iOS;
 using Prism;
 using Prism.Ioc;
@@ -29,6 +30,8 @@ namespace PokeApp.iOS
             Rg.Plugins.Popup.Popup.Init();
             CardsViewRenderer.Preserve();
             LoadApplication(new App(new iOSInitializer()));
+
+            AnimationViewRenderer.Init();
 
             return base.FinishedLaunching(app, options);
         }

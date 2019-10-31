@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="3.0.1" />
+    <PackageReference Include="dotMorten.Xamarin.Forms.AutoSuggestBox" Version="0.7.0" />
     <PackageReference Include="Flurl" Version="2.8.2" />
     <PackageReference Include="Flurl.Http" Version="2.4.2" />
     <PackageReference Include="LiteDB" Version="4.1.4" />
@@ -19,6 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="CustomView\LoaderView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Popups\PokemonPopupPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

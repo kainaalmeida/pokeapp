@@ -3,6 +3,7 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using FFImageLoading.Forms.Platform;
+using Lottie.Forms.Droid;
 using PanCardView.Droid;
 using Prism;
 using Prism.Ioc;
@@ -25,6 +26,7 @@ namespace PokeApp.Droid
 
             CachedImageRenderer.Init(true);
             CardsViewRenderer.Preserve();
+            AnimationViewRenderer.Init();
             LoadApplication(new App(new AndroidInitializer()));
         }
 

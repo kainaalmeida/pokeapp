@@ -30,6 +30,13 @@ namespace PokeApp.ViewModels
             set { SetProperty(ref pokemonList, value); }
         }
 
+        private bool _isBusyTypes;
+        public bool IsBusyTypes
+        {
+            get { return _isBusyTypes; }
+            set { SetProperty(ref _isBusyTypes, value); }
+        }
+
 
         public InfiniteScrollCollection<Pokemon> Pokemons { get; }
 
@@ -110,15 +117,15 @@ namespace PokeApp.ViewModels
             await PopupNavigation.Instance.PushAsync(new PokemonPopupPage(pokemon));
         }
 
-        public override void OnNavigatedTo(INavigationParameters parameters)
+        public override async void OnNavigatedTo(INavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
 
             var navigationMode = parameters.GetNavigationMode();
 
-            if(navigationMode != NavigationMode.Back)
+            if (navigationMode != NavigationMode.Back)
             {
-                LoadTypesPokemons().ConfigureAwait(false);
+                await LoadTypesPokemons();
             }
 
         }
@@ -127,8 +134,14 @@ namespace PokeApp.ViewModels
         {
             try
             {
-                IsBusy = true;
-                PokemonType = await _pokeApi.ObterTiposPokemons();
+                IsBusyTypes = true;
+                await _pokeApi.ObterTiposPokemons().ContinueWith(t =>
+                {
+                    if (t.Result != null)
+                        PokemonType = t.Result;
+
+                    IsBusyTypes = false;
+                });
             }
             catch (Exception ex)
             {
@@ -136,8 +149,13 @@ namespace PokeApp.ViewModels
             }
             finally
             {
-                IsBusy = false;
+                IsBusyTypes = false;
             }
+        }
+
+        public IEnumerable<string> AutoComplete(string termo)
+        {
+            return PokemonType.results.Where(x => x.name.StartsWith(termo, StringComparison.InvariantCultureIgnoreCase)).Select(x => x.name);
         }
     }
 }

@@ -5,13 +5,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
     xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+    xmlns:control="clr-namespace:dotMorten.Xamarin.Forms;assembly=dotMorten.Xamarin.Forms.AutoSuggestBox"
+    xmlns:customView="clr-namespace:PokeApp.CustomView"
     xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     xmlns:fontawesome="clr-namespace:PokeApp.Utils"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:scroll="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
     Title="{Binding Title}"
     android:ListView.IsFastScrollEnabled="True"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     ios:Page.UseSafeArea="true">
 
     <NavigationPage.TitleView>
@@ -32,80 +34,101 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ListView
-        HasUnevenRows="True"
-        x:Name="lv"
-        IsRefreshing="{Binding IsBusy}"
-        ItemsSource="{Binding Pokemons}"
-        SelectionMode="None"
-        SeparatorVisibility="None">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-                    <Frame
-                        Margin="10"
-                        BackgroundColor="#3663ad"
-                        CornerRadius="50">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
+        <control:AutoSuggestBox
+            Grid.Row="0"
+            Margin="10,0"
+            PlaceholderText="Qual tipo de pokemon deve aparecer?"
+            QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+            SuggestionChosen="AutoSuggestBox_SuggestionChosen"
+            TextChanged="AutoSuggestBox_TextChanged" />
 
-                            <ff:CachedImage
-                                Grid.Column="0"
-                                Aspect="AspectFit"
-                                FadeAnimationDuration="500"
-                                FadeAnimationEnabled="True"
-                                HorizontalOptions="Center"
-                                Source="{Binding sprites.front_default}">
-                                <ff:CachedImage.Transformations>
-                                    <ffTransformations:RoundedTransformation Radius="240" />
-                                </ff:CachedImage.Transformations>
-                            </ff:CachedImage>
+        <ListView
+            x:Name="lv"
+            Grid.Row="1"
+            HasUnevenRows="True"
+            IsRefreshing="{Binding IsBusy}"
+            ItemsSource="{Binding Pokemons}"
+            SelectionMode="None"
+            SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
 
+                        <Frame
+                            Margin="10"
+                            BackgroundColor="#3663ad"
+                            CornerRadius="50">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
 
-                            <Label
-                                Grid.Column="1"
-                                FontSize="Medium"
-                                HorizontalTextAlignment="Center"
-                                Text="{Binding name}"
-                                TextColor="White"
-                                VerticalTextAlignment="Center" />
-
-
-
-                            <ImageButton
-                                Grid.Column="2"
-                                Padding="15"
-                                BackgroundColor="Transparent"
-                                BorderColor="White"
-                                BorderWidth="2"
-                                CornerRadius="25"
-                                HeightRequest="50"
-                                HorizontalOptions="End"
-                                Command="{Binding Path=BindingContext.GaleriaCommand, Source={x:Reference lv}}"
-                                CommandParameter="{Binding .}"
-                                Source="{StaticResource galeryIcon}"
-                                WidthRequest="50" />
-
-                        </Grid>
-                    </Frame>
+                                <ff:CachedImage
+                                    Grid.Column="0"
+                                    Aspect="AspectFit"
+                                    FadeAnimationDuration="500"
+                                    FadeAnimationEnabled="True"
+                                    HorizontalOptions="Center"
+                                    Source="{Binding sprites.front_default}">
+                                    <ff:CachedImage.Transformations>
+                                        <ffTransformations:RoundedTransformation Radius="240" />
+                                    </ff:CachedImage.Transformations>
+                                </ff:CachedImage>
 
 
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-        <ListView.Behaviors>
-            <scroll:InfiniteScrollBehavior IsLoadingMore="{Binding IsBusy}" />
+                                <Label
+                                    Grid.Column="1"
+                                    FontSize="Medium"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding name}"
+                                    TextColor="White"
+                                    VerticalTextAlignment="Center" />
 
-            <b:EventToCommandBehavior
-                Command="{Binding NavegarCommand}"
-                EventArgsConverter="{StaticResource itemTappedEventArgsConverter}"
-                EventName="ItemTapped" />
-        </ListView.Behaviors>
-    </ListView>
+
+
+                                <ImageButton
+                                    Grid.Column="2"
+                                    Padding="15"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="White"
+                                    BorderWidth="2"
+                                    Command="{Binding Path=BindingContext.GaleriaCommand, Source={x:Reference lv}}"
+                                    CommandParameter="{Binding .}"
+                                    CornerRadius="25"
+                                    HeightRequest="50"
+                                    HorizontalOptions="End"
+                                    Source="{StaticResource galeryIcon}"
+                                    WidthRequest="50" />
+
+                            </Grid>
+                        </Frame>
+
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Behaviors>
+                <scroll:InfiniteScrollBehavior IsLoadingMore="{Binding IsBusy}" />
+
+                <b:EventToCommandBehavior
+                    Command="{Binding NavegarCommand}"
+                    EventArgsConverter="{StaticResource itemTappedEventArgsConverter}"
+                    EventName="ItemTapped" />
+            </ListView.Behaviors>
+        </ListView>
+
+        <customView:LoaderView Grid.RowSpan="2" />
+
+    </Grid>
+
+
 
 </ContentPage>
