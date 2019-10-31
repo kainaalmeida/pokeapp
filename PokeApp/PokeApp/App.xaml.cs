@@ -7,6 +7,7 @@ using Xamarin.Forms.Xaml;
 using PokeApp.Services;
 using PokeApp.Services.Contrato;
 using PokeApp.Views.Popups;
+using Xamarin.Essentials;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace PokeApp
@@ -39,6 +40,21 @@ namespace PokeApp
             containerRegistry.Register<IPokeApi, PokeApi>();
             containerRegistry.RegisterForNavigation<PokemonPopupPage, PokemonPopupPageViewModel>();
             containerRegistry.RegisterForNavigation<GaleriaPage, GaleriaPageViewModel>();
+        }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+
+            Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
+        }
+
+        private void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
+        {
+            if (e.NetworkAccess != NetworkAccess.Internet)
+                App.Current.MainPage.DisplayAlert("Aviso", "No momento você está sem conexão com a internet!", "OK");
+            else if(e.NetworkAccess == NetworkAccess.Internet)
+                App.Current.MainPage.DisplayAlert("Aviso", "Conectado a internet!", "OK");
         }
     }
 }
