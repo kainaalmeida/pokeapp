@@ -55,6 +55,8 @@
             IsRefreshing="{Binding IsBusy}"
             ItemsSource="{Binding Pokemons}"
             SelectionMode="None"
+            IsPullToRefreshEnabled="True"
+            RefreshCommand="{Binding RefreshCommand}"
             SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
