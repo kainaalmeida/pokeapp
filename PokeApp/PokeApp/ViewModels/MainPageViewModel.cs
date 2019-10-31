@@ -42,6 +42,7 @@ namespace PokeApp.ViewModels
         }
 
         public DelegateCommand<Pokemon> NavegarCommand { get; set; }
+        public DelegateCommand<Pokemon> GaleriaCommand { get; set; }
 
         public MainPageViewModel(INavigationService navigationService, IPokeApi pokeApi, IPageDialogService pageDialogService)
             : base(navigationService)
@@ -54,6 +55,7 @@ namespace PokeApp.ViewModels
             PokemonsPage = _db.GetCollection<PokemonList>();
 
             NavegarCommand = new DelegateCommand<Pokemon>(async (pokemon) => await NavegarCommandExecute(pokemon));
+            GaleriaCommand = new DelegateCommand<Pokemon>(async(pokemon) => await GaleriaCommandExecute(pokemon));
 
             Pokemons = new InfiniteScrollCollection<Pokemon>
             {
@@ -89,6 +91,11 @@ namespace PokeApp.ViewModels
 
             Pokemons.LoadMoreAsync();
 
+        }
+
+        private async Task GaleriaCommandExecute(Pokemon pokemon)
+        {
+            var teste = pokemon;
         }
 
         private async Task NavegarCommandExecute(Pokemon pokemon)

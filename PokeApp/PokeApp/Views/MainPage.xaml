@@ -32,6 +32,7 @@
 
     <ListView
         HasUnevenRows="True"
+        x:Name="lv"
         IsRefreshing="{Binding IsBusy}"
         ItemsSource="{Binding Pokemons}"
         SelectionMode="None"
@@ -83,6 +84,8 @@
                                 CornerRadius="25"
                                 HeightRequest="50"
                                 HorizontalOptions="End"
+                                Command="{Binding Path=BindingContext.GaleriaCommand, Source={x:Reference lv}}"
+                                CommandParameter="{Binding .}"
                                 Source="{StaticResource galeryIcon}"
                                 WidthRequest="50" />
 

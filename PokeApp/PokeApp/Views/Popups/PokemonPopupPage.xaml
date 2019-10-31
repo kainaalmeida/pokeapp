@@ -134,6 +134,7 @@
                             <Frame
                                 Margin="5,0"
                                 Padding="0"
+                                HeightRequest="30"
                                 CornerRadius="20"
                                 HasShadow="False">
                                 <Label
