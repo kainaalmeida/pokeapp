@@ -17,6 +17,7 @@ Durante o desenvolvimento, foram utilizadas algumas bibliotecas para que o mesmo
 * Flurl - O Flurl é um construtor de URLs modernos e fluentes, assíncronos, testáveis, portáteis, carregados de buzzword e uma biblioteca cliente HTTP para .NET. Tal ferramenta foi utilizada por prover uma maneira mais fácil e intuitiva de consumir apis, que após ter seu endpoint definido ela passar a ser uma extension da classe String.
 
 * Prism - Framework MVVM que permite uma separação dos conceitos de UI e seu comportamento. Foi utilizado por fornecer um grande ganho de produtividade como por exemplo passagem de parâmentros para as ViewModels através dos métodos OnNavigatedTo e OnNavigatedFrom ou o uso do EventAggregator onde é permitido trabalhar com Pub e Sub.
+Também trabalha com injeção de dependência onde podemos registrar nossos services por exemplo, caso queiramos trabalhar com um design pattern.
 
 * CardsView - Plugin que nos possibilta trabalhar com o esquema de cards, o mesmo possui vários tipos de controles para o card em si e é de fácil implementação.
 
