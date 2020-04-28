@@ -51,6 +51,23 @@ O Android, iOS e UWP oferecem APIs de plataforma e sistema operacional exclusivo
     </tr>
   </tbody>
  </table>
+ 
+ <table>
+  <thead>
+    <th>SPLASH</th>
+    <th>LISTA DE POKEMONS</th>
+    <th>DETALHE POKEMON</th>
+    <th>GALERIA</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="https://github.com/kainaalmeida/pokeapp/blob/master/Screenshots/splashAndroid.png"/></td>
+      <td><img src="https://github.com/kainaalmeida/pokeapp/blob/master/Screenshots/pokemonsAndroid.png"/></td>
+      <td><img src="https://github.com/kainaalmeida/pokeapp/blob/master/Screenshots/popupAndroid.png"/></td>
+      <td><img src="https://github.com/kainaalmeida/pokeapp/blob/master/Screenshots/galeriaAndroid.png"/></td>
+    </tr>
+  </tbody>
+ </table>
 
 
 
