@@ -1,3 +1,5 @@
+<img src="https://user-images.githubusercontent.com/11803107/79746139-e20c5b80-82df-11ea-8039-21680c5b9e35.jpg" width="220" height="60">
+
 # Poke App
 
 Poke App é um aplicativo desenvolvido em Xamarin Forms e Prism. O principal objetivo aqui, era utilizar a PokéApi e realizar algumas funcionalidades específicas, tais como:
